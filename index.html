@@ -1,39 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.1/dist/aframe-master.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laboratorio XR</title>
+
+    <!-- Librería A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.1/dist/aframe-master.min.js"></script>
 </head>
 
 <body>
 
-  <a-scene>
+    <a-scene>
 
-    <a-box position="0 1 -3"
-           rotation="0 45 0"
-           color="#4CC3D9">
-    </a-box>
+        <!-- ================================= -->
+        <!-- MODELO CAD / MODELO GLB -->
+        <!-- ================================= -->
 
-    <a-sphere position="2 1 -4"
-              radius="1"
-              color="#EF2D5E">
-    </a-sphere>
+        <a-assets>
 
-    <a-cylinder position="-2 1 -4"
-                radius="0.5"
-                height="1.5"
-                color="#FFC65D">
-    </a-cylinder>
+            <a-asset-item
+                id="modeloIndustrial"
+                src="models/modelo-optimized.glb">
+            </a-asset-item>
 
-    <a-plane rotation="-90 0 0"
-             width="10"
-             height="10"
-             color="#7BC8A4">
-    </a-plane>
+        </a-assets>
 
-    <a-sky color="#ECECEC"></a-sky>
 
-  </a-scene>
+        <!-- ================================= -->
+        <!-- MODELO INDUSTRIAL -->
+        <!-- ================================= -->
+
+        <!--
+        Se baja el modelo en el eje Y
+        para corregir la posición del CAD.
+        -->
+
+        <a-entity
+            gltf-model="#modeloIndustrial"
+            position="0 -8 -5">
+        </a-entity>
+
+
+        <!-- ================================= -->
+        <!-- PRIMITIVAS A-FRAME -->
+        <!-- ================================= -->
+
+        <!-- ESTRUCTURA -->
+        <a-box
+            position="0 2 -3"
+            scale="6 0.2 0.2"
+            color="#444444">
+        </a-box>
+
+
+        <!-- COLUMNA -->
+        <a-box
+            position="-3 1 -3"
+            scale="0.2 2 0.2"
+            color="#444444">
+        </a-box>
+
+
+        <!-- SENSOR -->
+        <a-sphere
+            position="2 2 -3"
+            radius="0.3"
+            color="red">
+        </a-sphere>
+
+
+        <!-- EJE -->
+        <a-cylinder
+            position="0 0.5 -3"
+            radius="0.3"
+            height="2"
+            color="yellow">
+        </a-cylinder>
+
+
+        <!-- ================================= -->
+        <!-- PISO -->
+        <!-- ================================= -->
+
+        <a-plane
+            position="0 0 0"
+            rotation="-90 0 0"
+            width="20"
+            height="20"
+            color="#555555">
+        </a-plane>
+
+
+        <!-- ================================= -->
+        <!-- ILUMINACIÓN -->
+        <!-- ================================= -->
+
+        <a-light
+            type="ambient"
+            intensity="1.5">
+        </a-light>
+
+        <a-light
+            type="directional"
+            position="2 5 3"
+            intensity="2">
+        </a-light>
+
+
+        <!-- ================================= -->
+        <!-- CIELO -->
+        <!-- ================================= -->
+
+        <a-sky
+            color="#87CEEB">
+        </a-sky>
+
+
+        <!-- ================================= -->
+        <!-- CÁMARA -->
+        <!-- ================================= -->
+
+        <a-camera
+            position="0 3 3"
+            rotation="-10 0 0">
+        </a-camera>
+
+    </a-scene>
 
 </body>
+
 </html>
